@@ -70,6 +70,7 @@ public class Menu {
                                System.out.printf("Checking account balance: %s\n", isAccount.getAccBalance());
                            }
                            if (menuNum == 4) {
+                               isAccount.fileDelete();
                                accCustomer.removeAccount(isAccount.getAccNumber());
                                System.out.println("Account Closed.");
                                menuNum = 5;
@@ -118,10 +119,11 @@ public class Menu {
                                    isAccount.makeWithdrawal(userWithdrawal);
                                }
                                if (menuNum == 3) {
-                                   System.out.printf("Checking account balance: %s\n", isAccount.getAccBalance());
+                                   System.out.printf("Savings account balance: %s\n", isAccount.getAccBalance());
                                }
                                if (menuNum == 4) {
-                                   accCustomer.removeAccount(isAccount.getAccNumber());
+                                   isAccount.fileDelete();
+                                   accCustomer.removeSavings(isAccount);
                                    System.out.println("Account Closed.");
                                    menuNum = 5;
                                }

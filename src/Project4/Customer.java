@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicReference;
 
-public class Customer {
+public class Customer implements Accounts{
     //instance variables
     private String firstName;
     private String lastName;
@@ -23,9 +23,11 @@ public class Customer {
     }
     //account operations
     //checking account
+    @Override
     public void addAccount(Account newAccount) {
         accountHashMap.put(newAccount.getAccNumber(),newAccount);
     }
+    @Override
     public void removeAccount(Integer oldAccount) {
         accountHashMap.remove(oldAccount);}
 
@@ -53,15 +55,13 @@ public class Customer {
     }
     public String getAllCheckingAccounts() {
         AtomicReference<String> allAccounts = new AtomicReference<>("\n****CHECKING ACCOUNTS****\n");
-        for (int x = 0; x < accountHashMap.size(); x++) {
             accountHashMap.forEach((key, value) -> allAccounts.updateAndGet(v -> v + (value) + "\n"));
-        }
         return allAccounts.get();
     }
     public String getAllSavingsAccounts() throws IOException {
         String allAccounts = "\n****SAVING ACCOUNTS****\n";
         for (Savings saving: savingsArrayList) {
-            allAccounts += "Account#: " + saving.getAccNumber() + "\nAccount Balance: " + saving.getAccBalance();
+            allAccounts += "Account#: " + saving.getAccNumber() + "\nAccount Balance: " + saving.getAccBalance() +"\n";
         }
         return allAccounts;
     }

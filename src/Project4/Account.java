@@ -94,4 +94,12 @@ public class Account {
         fWrite.close();
         outFS.close();
     }
+    public void fileDelete() {
+        File myFile = new File(Integer.toString(accNumber));
+        if (myFile.delete()) {
+            System.out.println("Deleted account#: " + myFile.getName());
+        } else {
+            System.out.println("Failed to delete the Account.");
+        }
+    }
 }

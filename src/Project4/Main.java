@@ -8,3 +8,9 @@ public class Main {
         Menu.runMenu();
     }
 }
+
+//did HashMap in Customer as alternate data type
+//Savings inherits Account
+//did interface
+//did file read and write
+//did NOT do unit testing
